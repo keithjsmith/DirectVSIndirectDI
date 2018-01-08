@@ -1,0 +1,80 @@
+﻿Create project CSharpAndUnity
+
+Create DungeonLibrary project and add reference to CSharpAndUnity
+
+Create public abstract Character class without the abstract 
+	Example method.  Include virtual methods CalcBlock, Hit, Damage
+
+Create the public Player class, inherit from Character 
+
+To write CalcHitChance and CalcDamage we need a Weapon class
+Add public Weapon class, discussion of business rules and ctors
+
+Add EquippedWeapon property to the Player, build out override 
+	methods using it, add default ctor using default Weapon
+
+Create Instance of Player in Program and show that the default ctor
+	for Player make a default Weapon instance to use as the
+	Weapon
+
+Define the issue with Version 2 of the program coming out. Notes
+	in Player class added.
+
+Add the abstract Example method to Character and discuss 
+what an abstract method does vs what interfaces do
+
+Add the public IAttack interface, implement it in Player
+Remove the CalcHitChance, CalcBlockChance, CalcDamage
+from the Character class
+
+Demonstrate that we need to remove the override keywords
+	and that after doing so, our functionality is maintained
+
+What if we wanted to make more than one weapon datatype?
+Add public IWeapon interface and implement the IWeapon interface.
+Demonstrate that functionality is maintained
+
+Change Weapon class to Sword class breaking functionality
+Add property of EquippedWeapon (IWeapon) to Player, 
+	default ctor to use Sword class and comments to reflect
+	sword instead of weapon
+
+Add public Axe class, copy the information from the Sword class
+Modify the class to have IsDoubleBladed property and use it
+	in the CTOR's
+
+
+Discuss dependency of Player on the Sword class and how 
+we have to hard code (tightly couple) it in the default
+Add FQCtor with the Axe class for it's equippedWeapon, then
+	change the parameter to IWeapon to add the ability to 
+	INJECT our dependency which	effectively decouples the dependency
+
+Add IPlayer interface and implement it in the Player class
+to abstract the player datatypes just like we abstracted the 
+weapon datatypes
+
+Create cw using FQ ctors of both Sword and Player
+
+Discuss IOC and it's relationship to DI
+Install Unity (Not Unity.MVC) Nuget package to both projects
+	using the Tools menu for access so we can choose both 
+	projects
+
+Add using Microsoft.Practices.Unity statement
+
+Create UnityContainer object on Program
+
+Add Single Parameter ctor to Player class for use with Unity
+	will need using Microsoft.Practices.Unity statement
+
+Create direct resolving with DI through Unity example
+	Show error and how to fix it with InjectionConstructor
+	data attribute
+
+Create indirect resolving with DI through Unity example
+	Show the same error as above with same resolution, but
+	for Player class this time
+
+Create indirect resolving with parameter injection through Unity
+	No errors, everything was all set up!
